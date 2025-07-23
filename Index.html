@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Love You</title>
+  <style>
+    html, body {
+      margin: 0px;
+      height: 100%;
+    }
+    .bg_heart {
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-image: url("https://images.pexels.com/photos/1102912/pexels-photo-1102912.jpeg?_gl=1*3y99ep*_ga*Nzc3MTcwMTc0LjE3NTMyNjcxMTM.*_ga_8JE65Q40S6*czE3NTMyNjcxMTMkbzEkZzEkdDE3NTMyNjcxNDIkajMxJGwwJGgw");
+      background-size: 100% 100%;
+      z-index: -1;
+    }
+    .container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      text-align: center;
+      color: white;
+      font-family: cursive;
+    }
+    .heart {
+      position: absolute;
+      top: -50%;
+      transform: rotate(-45deg);
+    }
+    .heart:before, .heart:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: inherit;
+      border-radius: 100%;
+    }
+    .heart:before {
+      top: -50%;
+      left: 0;
+    }
+    .heart:after {
+      top: 0;
+      right: -50%;
+    }
+
+    @keyframes love {
+      0% { top: 110%; }
+    }
+    @-webkit-keyframes love {
+      0% { top: 110%; }
+    }
+    @-moz-keyframes love {
+      0% { top: 110%; }
+    }
+    @-ms-keyframes love {
+      0% { top: 110%; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="bg_heart"></div>
+<div class="container">
+  <h2 id="text1"></h2>
+</div>
+
+<!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+  var love = setInterval(function () {
+    var r_num = Math.floor(Math.random() * 40) + 1;
+    var r_size = Math.floor(Math.random() * 65) + 10;
+    var r_left = Math.floor(Math.random() * 100) + 1;
+    var r_bg = Math.floor(Math.random() * 25) + 100;
+    var r_time = Math.floor(Math.random() * 5) + 5;
+
+    $('.bg_heart').append("<div class='heart' style='width:" + r_size + "px;height:" + r_size + "px;left:" + r_left + "%;background:rgba(255," + (r_bg - 25) + "," + r_bg + ",1);animation:love " + r_time + "s ease'></div>");
+    $('.bg_heart').append("<div class='heart' style='width:" + (r_size - 10) + "px;height:" + (r_size - 10) + "px;left:" + (r_left + r_num) + "%;background:rgba(255," + (r_bg - 25) + "," + (r_bg + 25) + ",1);animation:love " + (r_time + 5) + "s ease'></div>");
+  }, 500);
+
+  var i = 0;
+  var txt1 = "Maaaa this is for you :)  <<               Now I am going to say something very important and special to you because you are special to me. <<<               read it!  ma                                                                           >  < meri duniya, tu mera aasra,  <              Tere bina lagta sab kuch hai zara. << < Teri baahon mein milta sukoon ka jahaan < Teri god mein chhupi meri raahatein, <<  Tere pyaar se mili sab saugatein.< Maa ke pyaar ka pehla ehsaas tu, << Meri har kami ka har upaay tu.  <          Tu hi toh hai mera pyara asmaan.         > ma… tu rab ka paigam hai, < Tu hi toh mera aram hai. <    Tere bina adhoora har pal, <    Tu hi meri duniya, tu mera kal. < ma… tujhmein basi har dua, <   Tu hi mera pyaar, tu hi meri maa. < Main gira toh tu deewar ban gayi,  < Teri khamoshi bhi meri chattan ban gayi.          <<Bhagwan ne tujhe mere liye chuna, Mere dard ka har marham bana. Ek muskaan mein tu sab kuch keh gayi, Meri har tooti saans tu sehil gayi.  <                                    > <<   Bas ek baar mujhe dekh le tu,    Tere bina main hoon bilkul adhoora.  Tu hi hai meri har khushi ka raasta,   Tere jaisa koi nahi yahaan basta.    Pyaar se tu jab mujhe bulaye,  Roti bhi teri rasgulla ban jaye.,  Teri roshni se jeevan sajta,, Tera haath pakad ke dil bhi dhadakta.   << Bina tere main soona ho gaya, Jaise bina paani machhli roya.Tu aa jaaye toh roshan ho pal,Tere bina sab lage behal. Jab pakadti hai tu ungli meri,  Lagta jahan mil gaya poori tarah se hi., Tere anchal mein ho bas thodi si jagah,Toh mil jaaye har khushi, har raha. <Maaa.....! |                  << Give me One chance to Prove my Love ...!";
+  var speed = 75;
+
+  function typeWriter() {
+    if (i < txt1.length) {
+      if (txt1.charAt(i) == '<') {
+        document.getElementById("text1").innerHTML += '</br>';
+      } else if (txt1.charAt(i) == '>') {
+        document.getElementById("text1").innerHTML = '';
+      } else if (txt1.charAt(i) == '|') {
+        $(".bg_heart").css("background-imssage", "url('https://e1.pxfuel.com/desktop-wallpaper/306/921/desktop-wallpaper-panda-bear-bubu-dudu-dudu-bubu-thumbnail.jpg')"); // Replace with actual image if needed
+      } else {
+        document.getElementById("text1").innerHTML += txt1.charAt(i);
+      }
+      i++;
+      setTimeout(typeWriter, speed);
+    }
+  }
+
+  typeWriter();
+</script>
+
+</body>
+</html>
